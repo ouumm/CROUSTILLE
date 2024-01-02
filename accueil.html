@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil</title>
+    <link rel="icon" href="images/icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="StyleAccueil.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Rethink Sans' rel='stylesheet'>
+    <script src="jsAccueil.js" ></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+
+<header>
+    <div class="container">
+
+        <div class="half c1 text">
+            <a href="accueil.html">
+                <img id="imglogo" src="images/logo-cacroustille.png" alt="Logo">
+            </a>
+            <br><br><br><br>
+            <h1> Ça Crous'tille </h1><br>
+
+            <div class="text-3">Vous pouvez  <span class="typing-2"></span></div>
+            <script>
+                $(document).ready(function () {
+                    var typed = new Typed(".typing-2", {
+                        strings: ["Explorez", "Enregistrez", "Partagez"],
+                        typeSpeed: 100,
+                        backSpeed: 80,
+                        loop: true
+                    });
+                });
+            </script> <br>
+
+            <p>Bienvenue sur Ça Crous'tille , où chaque clic vous transporte vers de nouvelles saveurs.</p> <br>
+            <button class="btnentree"> C'est parti !</button>
+        </div>
+        <div class="half c2">
+            <div class="button-container">
+                <button id="btn1" class="btn-7" onclick="window.location.href='login.html'">Inscription</button>
+                <button id="btn2" class="btn-7" onclick="window.location.href='login.html'">Connexion</button>
+            </div>
+
+
+            <img id="centeredImage" src="images/logofondof.jpeg" >
+        </div>
+    </div>
+</header>
+
+
+<div class="cover-1">
+    <div class="text-cover1">
+        <h2> L'appli qui simplifie votre plaisir culinaire</h2>
+    </div>
+    <p>
+
+        Explorer les restaurants universitaires et suivre vos préférences culinaires n'a jamais été aussi simple et agréable.<br>
+        Ça Crous'tille propose de gérer vos expériences culinaires sur le campus.<br>
+        C'est votre guide personnel des saveurs universitaires, simplifié.
+    </p>
+
+
+
+
+
+    <div class="conteneurCarte">
+
+        <div class="CarteRetournement">
+            <div class="carte">
+                <div class="card-front">
+                    <p>LOCALISER </p>
+                    <div class="card-image">
+                        <div class="lo-section">
+                        <img src="images/logo/location.png" width="300px" height="250px"  >
+                    </div>
+                </div>
+
+                    <i class="arrow-icon fas fa-arrow-right"></i>
+                </div>
+                <div class="Carteverso">
+                    <div class="TexteVerso">
+                        <h3>LOCALISER</h3>
+                        <p>Identifiez facilement la position de vos délices préférés sur notre carte interactive !</p>
+                    </div>
+                    <a href="login.html" class="btn"> GO !</a>
+                </div>
+            </div>
+        </div>
+        <div class="CarteRetournement">
+            <div class="carte">
+                <div class="card-front">
+                    <p >ITINIRAIRE </p>
+
+                    <div class="card-image">
+                        <div class="lo-section">
+                        <img src="images/logo/itinerary.png" width="300px" height="250px">
+                    </div></div>
+
+
+                    <i class="arrow-icon fas fa-arrow-right"></i>
+                </div>
+                <div class="Carteverso">
+                    <div class="TexteVerso">
+                        <h3>ITINIRAIRE</h3>
+                        <p>Créez votre propre itinéraire en repérant chaque petite pépite croustillante sur notre carte, pour une expérience sur mesure</p>
+                    </div>
+                    <a href="login.html" class="btn">GO !</a>
+                </div>
+            </div>
+        </div>
+        <div class="CarteRetournement">
+            <div class="carte">
+                <div class="card-front">
+                    <p >FAVORIS</p>
+                    <div class="card-image">
+
+                        <img src="images/logo/favorite.png" width="300px" height="300px">
+                        </div>
+
+                    <i class="arrow-icon fas fa-arrow-right"></i>
+                </div>
+                <div class="Carteverso">
+                    <div class="TexteVerso">
+                        <h3>FAVORIS</h3>
+                        <p>Sauvegardez individuellement vos plaisirs croustillants préférés, vous permettant de les retrouver rapidement à chaque visite!</p>
+                    </div>
+                    <a href="login.html" class="btn">GO !</a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+<div class=" cover-1 cover-2">
+    <div class="text-cover1">
+        <h2> A propos de nous !</h2>
+        <p> Vous voulez en apprendre plus sur nous ? c'est ici que ca se passe !</p>
+        <div class="text-cover1">
+            <p> L'appli qui simplifie votre plaisir culinaire</p>
+        </div>
+        <p>
+
+
+        </p>
+        <div class="cover-2 static-card">
+            <div class="conteneurCarte">
+                
+                <div class="CarteRetournement">
+                    <div class="carte">
+                        <div class="card-front">
+                            <h2>Équipe</h2>
+                            <p>Équipe passionnée d'étudiants dévoués à faciliter la découverte des meilleurs restaurants pour la communauté étudiante.</p>
+                            <i class="arrow-icon fas fa-arrow-right"></i>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="CarteRetournement">
+                    <div class="carte">
+                        <div class="card-front">
+                            <h2>Engagement</h2>
+                            <p>Offrir une plateforme conviviale pour aider les étudiants à trouver des restaurants adaptés à leur budget.</p>
+                            <i class="arrow-icon fas fa-arrow-right"></i>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="CarteRetournement">
+                    <div class="carte">
+                        <div class="card-front">
+                            <h2>Valeurs</h2>
+                            <p>Valeurs reposant sur l'accessibilité, la diversité culinaire et le soutien aux entreprises locales.</p>
+                            <i class="arrow-icon fas fa-arrow-right"></i>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="CarteRetournement">
+                    <div class="carte">
+                        <div class="card-front">
+                            <h2>Environnement</h2>
+                            <p>Encouragement des pratiques durables et promotion des restaurants respectueux de l'environnement.</p>
+                            <i class="arrow-icon fas fa-arrow-right"></i>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="CarteRetournement">
+                    <div class="carte">
+                        <div class="card-front">
+                            <h2>Ajouter Restaurant</h2>
+                            <p>Contribuez à notre répertoire en ajoutant votre restaurant étudiant préféré!</p>
+                            <i class="arrow-icon fas fa-arrow-right"></i>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+</div>
+</body>
+</html>
