@@ -1,0 +1,128 @@
+*{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+#map {
+    height: 400px;
+    width: 100%;
+}
+input {
+    width: 45%;
+    padding: 10px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+
+    border-radius: 10px;
+    border: none;
+}
+
+#page{
+    display: flex;
+    background-color: #ffe8d6;
+}
+
+#map {
+    width: 60%;
+    height: 100vh;
+}
+
+#itineraire {
+    width: 40%;
+    text-align: center;
+    margin: auto;
+}
+
+#itineraire h2{
+   margin-bottom: 10px;
+}
+
+
+
+#imglogo {
+    height: 8vh;
+    position: fixed;
+    right: 5px;
+    margin-top: 10px;
+}
+
+#proximiter {
+    position: absolute;
+    top: 20px;
+    left: 61.5%;
+}
+
+
+
+#adressesCrous{
+    display:none;
+
+}
+
+.scrollable-div {
+    margin: auto;
+    max-height: 650px;
+    max-width: 36%;
+    overflow: auto; /* Ajout du défilement vertical si le contenu dépasse la hauteur de la div */
+    line-height: 1.45;
+    text-align: center;
+
+}
+
+
+#adressesCrous h2{
+    margin-bottom: 10px;
+
+}
+
+#ou{
+    line-height: 2.3;
+}
+
+#adressesCrous p:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+
+#fin{
+    display: none;
+    margin: auto;
+    text-align: center;
+}
+
+#fin h2{
+    margin-bottom: 20px;
+}
+
+
+#itineraire select, #proximiter, #geolocalisation, #recherche, #retour, #accueil{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border: none;
+    height: 3.3vh;
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+}
+
+#accueil{
+    margin-left: 20px;
+}
+#retour{
+    margin-top: 20px;
+}
+
+#itineraire select{
+    padding-left: 6px; !important;
+    padding-right: 0px;!important;
+    margin-bottom: 35px;
+
+}
+
+
+

@@ -1,0 +1,145 @@
+*{
+    margin: 0;    
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+#map {
+    height: 400px;
+    width: 100%;
+}
+input {
+    width: 45%;
+    padding: 10px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+#page{
+    display: flex;
+    background-color: #ffe8d6;
+}
+
+#map {
+    width: 60%;
+    height: 100vh; 
+}
+
+#itineraire {
+    
+    width: 40%;
+    text-align: center;
+    margin: auto; 
+}
+
+#itineraire h1{
+    margin-top: -100px;
+    margin-bottom: 30px;
+}
+
+#calculeRoute{
+    margin-top: 10px;
+    height: 4vh;
+    border-radius: 30px;
+    border: none;
+    background-color: red;
+    color: white;
+}
+
+
+#imglogo {
+    height: 8vh;
+    position: fixed;
+    right: 5px;
+    margin-top: 10px;
+}
+
+
+
+#modeTransport{
+    margin-bottom: 10px;
+    border: none;
+    height: 3.2vh;
+    border-radius: 10px;
+    background-color: white;
+
+}
+#detailchemin{
+    display: none;
+    text-align: center; 
+    margin: auto;
+    max-width: 45%;
+
+}
+
+
+#typetrajet{
+    margin-bottom: 20px;
+}
+
+
+#selectOptions {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute; 
+    z-index: 1;
+    background-color: white;
+    border: none;
+    max-height: 180px;
+    overflow-y: auto;
+    width: 19.3%; /* Ajustez la largeur selon vos besoins */
+    transform: translateX(54%);
+    margin-top: -10px;
+    font-size: small;
+}
+
+
+#end.show-autocomplete {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#selectOptions li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+#selectOptions li:hover {
+    background-color: red;
+    color: white;
+}
+
+
+#proximiter {
+    position: absolute;
+    top: 20px;
+    left: 61.5%;
+}
+
+
+#itineraire select, #proximiter, #retour{
+    text-decoration: none;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border: none;
+    height: 3.3vh;
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.scrollable-div {
+    margin: auto;
+    max-height: 590px;
+    max-width: 95%;
+    overflow: auto; /* Ajout du défilement vertical si le contenu dépasse la hauteur de la div */
+    line-height: 1.45;
+    text-align: center;
+
+}

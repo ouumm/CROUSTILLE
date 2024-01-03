@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+
+.cover-1 {
+    background-color: #ffe8d6;
+    top: 10px;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+
+
+.banniere {
+    background-color: rgb(218, 65, 65);
+    color: #eee4de;
+    height: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.banniere h1,
+.banniere h2 {
+    font-family: "Varela Round";
+    margin: 0;
+}
+
+lien-deco {
+    margin-top: 10px;
+}
+
+.lien-deco a {
+    text-decoration: none;
+    padding: 10px;
+    background-color: #d84141;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-out;
+}
+
+.lien-deco a:hover {
+    background-color: #ffe8d6;
+    color: #d84141;
+}
+
+
+
+.messageBienv{
+    font-family: "Varela Round";
+    padding-left:3%;
+    padding-top:1%;
+}
+.conteneur {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.forme{
+    width: 400px;
+    height: 400px;
+    background-color: #d84141;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.forme:hover {
+    transform: scale(1.05);
+}
+
+.forme p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.forme h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5%;
+}
+
+.forme a {
+    display: inline-block;
+    border-radius: 10px;
+    padding: 8px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: normal;
+    font-size: 14px;
+    color: white;
+    transition: background-color 0.3s ease-out, color 0.3s ease-out;
+}
+
+.forme:hover a {
+    background-color: #ffe8d6;
+    color: #d84141;
+}
+
+@media (max-width: 768px) {
+    .conteneur {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .forme{
+        margin-bottom: 20px;
+    }
+}
+
+
+
+
+
+
+
