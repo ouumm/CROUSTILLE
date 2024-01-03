@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['mdp'] = $mdp;
                 $_SESSION['ID'] = $utilisateur['ID'];
 
-                header("Location: espace_Client.php");
+                header("Location: PageClient.php");
                 exit();
             } else {
                 echo "<script language='JavaScript'>";

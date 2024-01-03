@@ -1,6 +1,16 @@
 <?php
 session_start();
-$_SESSION=array();
-    session_destroy()
-header('Location:login.php');
-        ?>
+
+if (isset($_GET['deco'])) {
+
+    $_SESSION = array();
+
+
+    session_destroy();
+
+
+    header('Location: login.html');
+    exit();
+}
+?>
+
