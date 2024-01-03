@@ -27,44 +27,64 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $_SESSION['mdp'] = $mdp;
                     $_SESSION['ID'] = $recupUtilisateur->fetch()['ID'];
 
+                    echo "<script language='JavaScript'>";
+                    echo "alert('Votre compte a été crée ! veuillez vous connecter !');";
+                    echo "window.location.href='login.html';";
+                    echo "</script>";
+
                 }
 
 
             }else {
 
-                echo "Cet email est déjà utilisé par un autre utilisateur.";
+                echo "<script language='JavaScript'>";
+                echo "alert('Cet email est déjà utilisé par un autre utilisateur.');";
+                echo "window.location.href='login.html';";
+                echo "</script>";
+
+
             }
 
 
         } else {
-            echo "Remplissez tous les champs";
+
+            echo "<script language='JavaScript'>";
+            echo "alert('Remplissez tous les champs');";
+            echo "window.location.href='login.html';";
+            echo "</script>";
+
         }
 
 
     } elseif (isset($_POST['soumettre'])) {
-// Traitement du formulaire de connexion ici
+        // Traitement du formulaire de connexion ici
         if (!empty($_POST['email']) && !empty($_POST['mdp'])) {
             $email = htmlspecialchars($_POST['email']);
             $mdp = sha1($_POST['mdp']);
 
-
-
-            $recupUtilisateur = $bdd->prepare('SELECT * FROM utilisateur WHERE email= ? AND mdp= ?');
+            $recupUtilisateur = $bdd->prepare('SELECT * FROM utilisateur WHERE email = ? AND mdp = ?');
             $recupUtilisateur->execute(array($email, $mdp));
-            if ($recupUtilisateur->rowcount() > 0) {
+
+            if ($recupUtilisateur->rowCount() > 0) {
+                $utilisateur = $recupUtilisateur->fetch();
+                $_SESSION['nom'] = $utilisateur['nom'];
                 $_SESSION['email'] = $email;
                 $_SESSION['mdp'] = $mdp;
-                $_SESSION['ID'] = $recupUtilisateur->fetch()['ID'];
-                echo $_SESSION['ID'];
+                $_SESSION['ID'] = $utilisateur['ID'];
 
+                header("Location: espace_Client.php");
+                exit();
             } else {
-                echo "votre mdp ou email est incorrect";
+                echo "<script language='JavaScript'>";
+                echo "alert('Votre mot de passe ou votre email est incorrect');";
+                echo "window.location.href='login.html';";
+                echo "</script>";
             }
-
-
         } else {
-            echo "Remplissez tous les champs";
+            echo "<script language='JavaScript'>";
+            echo "alert('Remplissez tous les champs');";
+            echo "window.location.href='login.html';";
+            echo "</script>";
         }
     }
 }
-

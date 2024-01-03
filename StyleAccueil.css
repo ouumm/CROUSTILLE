@@ -1,13 +1,5 @@
 * {
     margin: 0;
-    Padding: 0;
-    box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
@@ -16,75 +8,60 @@ body, html {
     height: 100%;
     margin: 0;
     padding: 0;
-}
-
-body {
     font-family: Arial, sans-serif;
 }
 
-
-
-
-
-.container{
-    top:10px;
-    display:flex;
+.container {
+    top: 10px;
+    display: flex;
     height: 100vh;
 }
 
-.half{
+.half {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-
-
 }
+
 .c1 {
-    background-color:#ffe8d6;
-
+    background-color: #ffe8d6;
 }
-.c1 h1{
-    color:  #333;;
+
+.c1 h1 {
+    color: #333;
     font-family: "Fira Sans", sans-serif;
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 10px;
-
-
 }
 
-
-
 .text {
-    color:#333;;
+    color: #333;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     height: 100vh;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .text h1 {
-
-    font-size:3.3rem;
+    font-size: 3.3rem;
     font-weight: bold;
     margin-bottom: 20px;
-
 }
 
 .text h2 {
-
     font-size: 1.8rem;
     font-weight: bolder;
     margin-bottom: 10px;
 }
 
 .text p {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: #333;
     font-size: 1.5rem;
     line-height: 1.5;
@@ -93,21 +70,21 @@ body {
     font-weight: bold;
 }
 
-.btnentree{
+.btnentree {
     padding: 15px 40px;
     font-size: 1.5rem;
     font-weight: bold;
     cursor: pointer;
     border: 0;
     color: #333;
-    background: transparent ;
+    background: transparent;
     position: relative;
     margin: 20px;
-    transition: all .25s;
-
+    transition: all 0.25s;
 }
 
-.btnentree::after,.btnentree::before{
+.btnentree::after,
+.btnentree::before {
     border: 3px solid #333;
     content: '';
     position: absolute;
@@ -116,40 +93,35 @@ body {
     height: 100%;
     left: 0px;
     bottom: 0px;
-    transition: all .25s;
-
+    transition: all 0.25s;
 }
 
-.btnentree:hover::after{
+.btnentree:hover::after {
     transform: translate(-5px, -5px);
 }
-.btnentree:hover::before{
+
+.btnentree:hover::before {
     transform: translate(5px, 5px);
 }
 
-.c1,
-.c2 {
-    flex: 1;}
+.c1, .c2 {
+    flex: 1;
+}
 
 .c2 {
-
     background-color: rgb(250, 252, 253);
     display: flex;
     align-items: center;
     justify-content: center;
 }
-#centeredImage {
 
+#centeredImage {
     border-radius: 10px;
     max-width: 85%;
     max-height: 70%;
     margin-top: 10%;
-
     box-shadow: 0 0 10px rgba(124, 117, 117, 0.1);
 }
-
-
-
 
 #btn1 {
     padding-top: 5px;
@@ -166,22 +138,16 @@ body {
 #imglogo {
     position: absolute;
     bottom: 88%;
-    right:88%;
-
+    right: 88%;
     border-radius: 3%;
     width: 150px;
-
-
 }
 
-
-
 .btn-7 {
-
     position: absolute;
-    top:20px;
-    right:0;
-    margin-right: 15px;;
+    top: 20px;
+    right: 0;
+    margin-right: 15px;
     border-radius: 15px;
     border: none;
     background-color: #ffe8d6;
@@ -194,10 +160,12 @@ body {
     -webkit-transition: all 0.3s linear;
     transition: all 0.3s linear;
 }
+
 .btn-7:hover {
     background: transparent;
     color: #ffe8d6;
 }
+
 .btn-7:before,
 .btn-7:after {
     border-radius: 60px;
@@ -211,12 +179,15 @@ body {
     background: #ffe8d6;
     transition: all 0.3s ease;
 }
+
 .btn-7:before {
     top: 0;
 }
+
 .btn-7:after {
     bottom: 0;
 }
+
 .btn-7:hover:before,
 .btn-7:hover:after {
     height: 0;
@@ -224,66 +195,16 @@ body {
 }
 
 
-@media (max-width: 900px) {
-    body {
-        margin: 0;
-        padding: 0;
-    }
-    .container {
-
-
-
-
-
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-    }
-
-    .c1,
-    .c2 {
-        flex: 1;}
-
-    .half {
-        width: 100%;
-    }
-    .btnentree {
-        width: 95%;
-    }
-
-    #imglogo{
-        position: absolute;
-        bottom: 90%;
-        right: 85%;
-        border-radius: 3%;
-        width:80px;
-
-    }
-    .btn-7:hover {
-
-
-        color: #716c6c;
-    }
-
-
-
-
-
-
-}
-
-
-.text-3{
+.text-3 {
     font-size: 40px;
     margin: 5px 0;
 }
-.text-3 span{
+
+.text-3 span {
     color: rgb(218, 65, 65);
     font-weight: 500;
-    font-weight:bolder;
+    font-weight: bolder;
 }
-
-
 
 .cover-1 {
     background-color: rgb(255, 255, 255);
@@ -317,11 +238,9 @@ body {
     text-align: center;
     font-size: 1.5rem;
     font-weight: lighter;
-
-
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1200px) {
     .cover-1 {
         height: auto;
         display: flex;
@@ -329,7 +248,6 @@ body {
         justify-content: center;
         align-items: center;
         position: relative;
-        margin-top: 470px;
     }
 
     .cover-1 h1 {
@@ -337,26 +255,17 @@ body {
     }
 
     .cover-1 p {
-        margin-top: 10px;
         font-size: 1.2rem;
     }
 }
 
-
-
-
-
-.cover-2{
-    background-color:  #ffe8d6;
-
+.cover-2 {
+    background-color: #ffe8d6;
 }
 
-
-
-.containerImage{
+.containerImage {
     display: inline-block;
     margin-right: 10px;
-
 }
 
 #logonote,
@@ -368,14 +277,10 @@ body {
     flex-direction: row;
 }
 
-.test{
+.test {
     display: flex;
     flex-direction: row;
 }
-
-
-
-
 
 h2 {
     color: #333;
@@ -383,16 +288,15 @@ h2 {
     padding-bottom: 20px;
     border-bottom: 1px dashed gray;
 }
+
 h2 span {
     display: block;
 }
+
 h2 span:nth-child(1) {
     font-weight: normal;
-    color:#2267AE;
+    color: #2267AE;
 }
-
-
-
 
 .conteneurCarte {
     display: grid;
@@ -400,13 +304,13 @@ h2 span:nth-child(1) {
     grid-gap: 30px;
     margin: 80px 0;
 }
-.CarteRetournement{
+
+.CarteRetournement {
     position: relative;
     min-height: 350px;
     perspective: 2000px;
     perspective-origin: top;
 }
-
 
 .CarteRetournement:hover .carte {
     transform: rotateY(180deg);
@@ -416,7 +320,7 @@ h2 span:nth-child(1) {
     position: relative;
     height: 100%;
     transform-style: preserve-3d;
-    transition: transform 0.8s cubic-bezier(0.86,0,0.07,1);
+    transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
     color: white;
     font-weight: bold;
 }
@@ -433,7 +337,7 @@ h2 span:nth-child(1) {
 }
 
 .card-front {
-    background:  rgb(218, 65, 65);
+    background: rgb(218, 65, 65);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -454,22 +358,21 @@ h2 span:nth-child(1) {
     bottom: 30px;
 }
 
-
-.Carteverso{
+.Carteverso {
     background: rgb(218, 65, 65);
     transform: rotateY(180deg);
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
+
 .CarteRetournement:nth-child(even) .Carteverso {
     background-color: #ffe8d6;
 }
+
 .Carteverso .TexteVerso h3 {
     font-size: 1.5rem;
-    margin-bottom:5%;
-
+    margin-bottom: 5%;
     color: #231f1f;
 }
 
@@ -484,21 +387,15 @@ h2 span:nth-child(1) {
     font-weight: normal;
     font-size: 14px;
     color: #dfe2e9;
-    transition:
-            background-color 0.3s ease-out,
-            color 0.3s ease-out;
+    transition: background-color 0.3s ease-out, color 0.3s ease-out;
 }
-
-
-
 
 .CarteRetournement:nth-child(odd) .Carteverso a:hover {
     background-color: #ffe8d6;
-
 }
-.CarteRetournement:nth-child(even) .Carteverso a:hover {
-    background-color:  rgb(218, 65, 65);
 
+.CarteRetournement:nth-child(even) .Carteverso a:hover {
+    background-color: rgb(218, 65, 65);
 }
 
 .card-image img {
@@ -507,28 +404,21 @@ h2 span:nth-child(1) {
     height: auto;
     display: block;
     margin: 0 auto;
-    margin-bottom:10%;
-}
-.lo-section{
-    margin-top:5%;
+    margin-bottom: 10%;
 }
 
-
-a:link {
-    color: #333;
-    text-decoration: none;
+.lo-section {
+    margin-top: 5%;
 }
 
-
+a:link,
 a:visited {
     color: #333;
     text-decoration: none;
 }
 
-
 a:hover {
     color: #555;
-
 }
 
 .static-card .CarteRetournement:hover .carte {
@@ -553,11 +443,8 @@ a:hover {
 .static-card .card-front,
 .static-card .Carteverso {
     width: 255px;
-    height:515px;
-
+    height: 450px;
 }
-
-
 
 .static-card .card-image img {
     max-width: 150px;
@@ -579,16 +466,96 @@ a:hover {
 
 
 
-@media (max-width: 700px) {
-    .static-card .CarteRetournement,
-    .static-card .carte,
-    .static-card .card-front,
-    .static-card .Carteverso {
-        width: 100%;
+
+
+
+
+        @media (max-width: 920px) {
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: auto;
+        }
+
+        .c1,
+        .c2 {
+            flex: 1;
+        }
+
+        .half {
+            width: 100%;
+        }
+
+        .btnentree {
+            width: 95%;
+        }
+
+        #imglogo {
+            position: absolute;
+            bottom: 90%;
+            right: 85%;
+            border-radius: 3%;
+            width: 80px;
+        }
+
+        .btn-7:hover {
+            color: #716c6c;
+        }
+
+
+
+        .cover-1 h1 {
+            font-size: 1.8rem;
+        }
+
+        .cover-1 p,
+        .cover-1 h2 {
+            margin-top: 10px;
+            font-size: 1.2rem;
+        }
+
+        .cover-2 {
+            height: auto;
+        }
+
+        .cover-2 .conteneurCarte {
+            display: flex;
+            flex-wrap: wrap; /* Allow cards to wrap to the next line */
+            justify-content: space-around;
+            gap: 15px;
+        }
+
+        .static-card .CarteRetournement,
+        .static-card .carte,
+        .static-card .card-front,
+        .static-card .Carteverso {
+            width: 100%;
+            height: auto;
+        }
+
+        .static-card .card-image img {
+            max-width: 150px;
+            width: 100%;
+        }
+
+        .cover-1 .cover-2 p,
+        .cover-1 .cover-2 h2 {
+            margin-bottom: 10px; /* Adjust the margin as needed */
+            font-size: 1em;
+        }
+
+
+
+
+
+        #imglogo {
+       left: 0%;
+        }
     }
 
-    .static-card .conteneurCarte {
-        grid-template-columns: 1fr;
-        grid-gap: 15px;
-    }
-}
+
