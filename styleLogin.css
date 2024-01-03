@@ -242,3 +242,14 @@ input {
 
 
 }
+
+.text-3 {
+    font-size: 40px;
+    margin: 5px 0;
+}
+
+.text-3 span {
+    color: rgb(218, 65, 65);
+    font-weight: 500;
+    font-weight: bolder;
+}
