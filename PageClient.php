@@ -53,14 +53,13 @@ if(!$_SESSION['mdp']){
     <div id="card-1" class="conteneur">
         <div class="forme">
             <a href="itineraire.html" class="ctn"  >
-                <h1> A proximité </h1>
-                <img src="images/logo/location.png" class="img">
-
+                <h1> Itinéraire </h1>
+                <img src="images/logo/itinerary.png" class="img">
             </a></div>
         <div class="forme" id="card-3">
             <a href="proximiter.html" class="ctn">
-                <h1> Itinéraire </h1>
-                <img src="images/logo/itinerary.png" class="img">
+                <h1> A proximité </h1>
+                <img src="images/logo/location.png" class="img">
             </a></div>
         <div class="forme" id="card-3">
             <a href="forum.php" class="ctn">

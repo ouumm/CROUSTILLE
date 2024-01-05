@@ -32,13 +32,15 @@ function initMap() {
     autocompletion('start');
     autocompletionCrous('end');
 
+    let indice = 0;
     $.ajax({
         url: 'resto_crous.json',
         dataType: 'json',
         success: function (json) {
             jsonData = json;
             for (var i = 0; i < jsonData.length; i++) {
-                addMarker(jsonData[i]);
+                indice +=1;
+                addMarker(jsonData[i],indice);
             }
         },
         error: function (error) {
@@ -78,7 +80,7 @@ function addMarker(place, i) {
     popupContent += `<button onclick="addToFavorites(${i})">Ajouter en favoris</button></div>`; // Pass the index to addToFavorites
 
     let infowindow = new google.maps.InfoWindow({
-        content: i + popupContent,
+        content: popupContent,
         id: i // Assign the index to the id property of the InfoWindow
     });
 
