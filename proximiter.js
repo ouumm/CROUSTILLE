@@ -3,11 +3,14 @@ var directionsService;
 var directionsDisplay;
 var currentInfowindow = null;
 var jsonData;
-var userLatLng;
+var userLatLng = null;
 var markers = [];
 
-window.addEventListener('load',initMap);
+
+window.addEventListener('load', initMap);
+
 function initMap() {
+    console.log('Initializing the map...');
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 48.8566, lng: 2.3522 },
         zoom: 11.8,
@@ -31,14 +34,16 @@ function initMap() {
     directionsDisplay.setMap(map);
 
     autocompletion('start');
-
+    let indice = 0;
     $.ajax({
         url: 'resto_crous.json',
         dataType: 'json',
         success: function (json) {
+            console.log('JSON data loaded successfully.');
             jsonData = json;
             for (let i = 0; i < jsonData.length; i++) {
-                addMarker(jsonData[i]);
+                indice += 1;
+                addMarker(jsonData[i], indice);
             }
         },
         error: function (error) {
@@ -47,21 +52,20 @@ function initMap() {
     });
 
     let geo = document.getElementById('geolocalisation');
-    geo.addEventListener('click', function(){
+    geo.addEventListener('click', function () {
         geolocalisation();
     });
 
     let btnRecherche = document.getElementById("recherche")
-    btnRecherche.addEventListener("click", function(){
+    btnRecherche.addEventListener("click", function () {
         clearMarkers();
         GeocodeAdresseSaisie();
-    })
+    });
+
 
 }
 
-
-
-function addMarker(place) {
+function addMarker(place, i) {
     let marker = new google.maps.Marker({
         position: { lat: place.fields.geolocalisation[0], lng: place.fields.geolocalisation[1] },
         map: map,
@@ -71,16 +75,31 @@ function addMarker(place) {
     markers.push(marker);
 
     let truncatedContact = TextTraiter(place.fields.contact);
-    let popupContent = "<div><h4>" + place.fields.title + "</h4><p> Adresse : " + truncatedContact;
+    let popupContent = `<div><h4>${place.fields.title}</h4><p> Adresse : ${truncatedContact}`;
+
+    // Ajouter le bouton avec l'événement onclick directement dans la chaîne HTML
+    popupContent += `<button onclick="addToFavorites(${i})">Ajouter en favoris</button></div>`; // Pass the index to addToFavorites
 
     let infowindow = new google.maps.InfoWindow({
-        content: popupContent
+        content: i + popupContent,
+        id: i // Assign the index to the id property of the InfoWindow
     });
 
-    Marker(infowindow,marker, place);
+    marker.addListener('click', function () {
+        if (currentInfowindow) {
+            currentInfowindow.close();
+        }
+        infowindow.open(map, marker);
+        currentInfowindow = infowindow;
+
+        calculerItineraire(userLatLng, { lat: place.fields.geolocalisation[0], lng: place.fields.geolocalisation[1] });
+    });
 }
 
-function Marker(infowindow, marker, place){
+
+
+
+function Marker(infowindow, marker, place) {
     marker.addListener('click', function () {
         if (currentInfowindow) {
             currentInfowindow.close();
@@ -116,13 +135,16 @@ function geolocalisation() {
     }
 }
 
+
 function CentrerCarte(position) {
     userLatLng = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
     };
 
-    clearMarkers()
+    console.log('User location:', userLatLng);
+
+    clearMarkers();
     CalculerDistance(userLatLng);
 }
 
@@ -186,19 +208,14 @@ function CalculerDistance(userLatLng) {
 
 }
 
-
-
-
-function calculerItineraire(userLatLng, crousLatLng){
-    //let listemode = document.getElementById("listemode");
+function calculerItineraire(userLatLng, crousLatLng) {
     var selectedMode = document.getElementById('modeTransport').value;
 
     let request = {
         origin: userLatLng,
         destination: crousLatLng,
-        travelMode: selectedMode // Vous pouvez également changer le mode de déplacement si nécessaire
+        travelMode: selectedMode
     };
-
 
     directionsService.route(request, function (response, status) {
         if (status == google.maps.DirectionsStatus.OK) {
@@ -211,7 +228,6 @@ function calculerItineraire(userLatLng, crousLatLng){
             let routeDetails = document.getElementById("fin");
 
             routeDetails.innerHTML = '<div id="tout" >' + '<h2>' + "Voici l'itinéraire : " + '</h2>';
-
 
             for (let i = 0; i < route.legs.length; i++) {
                 let leg = route.legs[i];
@@ -230,6 +246,7 @@ function calculerItineraire(userLatLng, crousLatLng){
         }
     });
 }
+
 function reloadPage() {
     location.reload();
 }
@@ -238,22 +255,22 @@ function GeocodeAdresseSaisie() {
     let adresseDepart = document.getElementById('start').value;
     if (adresseDepart) {
         let geocoder = new google.maps.Geocoder();
-        geocoder.geocode({'address': adresseDepart}, function (results, status) {
+        geocoder.geocode({ 'address': adresseDepart }, function (results, status) {
             if (status == 'OK') {
                 userLatLng = {
                     lat: results[0].geometry.location.lat(),
                     lng: results[0].geometry.location.lng()
                 };
 
-                CalculerDistance(userLatLng);
+                console.log('Geocoded address:', userLatLng);
 
+                CalculerDistance(userLatLng);
             } else {
                 alert('Veuillez saisir une adresse valide.');
             }
         });
     }
 }
-
 
 function clearMarkers() {
     for (let i = 0; i < markers.length; i++) {
@@ -262,8 +279,65 @@ function clearMarkers() {
     markers = [];
 }
 
-
 function retourAdresses() {
     document.getElementById("fin").style.display = "none";
     document.getElementById("adressesCrous").style.display = "block";
+}
+
+function getUserid() {
+    var userInfo = null;
+
+    $.ajax({
+        type: 'GET',
+        url: 'get_user_id.php',
+        dataType: 'json', // Specify that the response should be treated as JSON
+        async: false,
+        success: function (response) {
+            userInfo = response;
+            ;
+        },
+        error: function (error) {
+            console.error('Erreur lors de la récupération des informations de l\'utilisateur', error);
+        }
+    });
+    console.log(userInfo)
+    return userInfo;
+}
+function addToFavorites(placeId) {
+    console.log('Adding to favorites - Place ID:', placeId);
+
+    // Get the user ID
+    var userId = getUserid();
+
+    if (userId !== null) {
+        // Assuming placeId is the restaurant ID
+        // You may need to adjust this based on the structure of your 'donneecrous' table
+        var restaurantId = placeId;
+
+        // Make an AJAX request to add the favorite
+        $.ajax({
+            type: 'POST',
+            url: 'ajouter_favoris.php',  // Assurez-vous d'avoir le bon chemin vers votre script PHP
+            data: {
+                restaurantId: restaurantId,
+                userId: userId
+            },
+            dataType: 'json',
+            success: function (response) {
+                if (response.success) {
+                    console.log('Restaurant ajouté aux favoris');
+                    // Vous pouvez ajouter des actions supplémentaires ici si nécessaire
+                } else {
+                    console.error('Erreur lors de l\'ajout aux favoris:', response.error);
+                    // Gérer l'erreur ici si nécessaire
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Erreur AJAX:', status, error);
+                console.error('Réponse serveur:', xhr.responseText);
+            }
+        });
+    } else {
+        window.location.href = 'login.html';
+    }
 }

@@ -3,6 +3,8 @@ var directionsService;
 var directionsDisplay;
 var currentInfowindow = null;
 var jsonData;
+var userLatLng;
+var markers = [];
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -60,18 +62,24 @@ function initMap() {
     });
 }
 
-function addMarker(place) {
-    var marker = new google.maps.Marker({
+function addMarker(place, i) {
+    let marker = new google.maps.Marker({
         position: { lat: place.fields.geolocalisation[0], lng: place.fields.geolocalisation[1] },
         map: map,
         title: place.fields.title
     });
 
-    let truncatedContact = TextTraiter(place.fields.contact);
-    var popupContent = "<div><h4>" + place.fields.title + "</h4><p> Adresse : " + truncatedContact;
+    markers.push(marker);
 
-    var infowindow = new google.maps.InfoWindow({
-        content: popupContent
+    let truncatedContact = TextTraiter(place.fields.contact);
+    let popupContent = `<div><h4>${place.fields.title}</h4><p> Adresse : ${truncatedContact}`;
+
+    // Ajouter le bouton avec l'événement onclick directement dans la chaîne HTML
+    popupContent += `<button onclick="addToFavorites(${i})">Ajouter en favoris</button></div>`; // Pass the index to addToFavorites
+
+    let infowindow = new google.maps.InfoWindow({
+        content: i + popupContent,
+        id: i // Assign the index to the id property of the InfoWindow
     });
 
     marker.addListener('click', function () {
@@ -81,11 +89,8 @@ function addMarker(place) {
         infowindow.open(map, marker);
         currentInfowindow = infowindow;
 
-        // Mise à jour de la valeur de l'input avec l'id "end" avec l'adresse du marqueur
-        document.getElementById('end').value = truncatedContact;
     });
 }
-
 function autocompletionCrous(id) {
     var input = document.getElementById(id);
 
@@ -191,4 +196,62 @@ function checkAddressInJSON(address) {
 function TextTraiter(contactText) {
     let endIndex = contactText.indexOf("Téléphone") !== -1 ? contactText.indexOf("Téléphone") : contactText.indexOf("E-mail");
     return endIndex !== -1 ? contactText.substring(0, endIndex) : contactText;
+}
+
+function getUserid() {
+    var userInfo = null;
+
+    $.ajax({
+        type: 'GET',
+        url: 'get_user_id.php',
+        dataType: 'json', // Specify that the response should be treated as JSON
+        async: false,
+        success: function (response) {
+            userInfo = response;
+            ;
+        },
+        error: function (error) {
+            console.error('Erreur lors de la récupération des informations de l\'utilisateur', error);
+        }
+    });
+    console.log(userInfo)
+    return userInfo;
+}
+function addToFavorites(placeId) {
+    console.log('Adding to favorites - Place ID:', placeId);
+
+    // Get the user ID
+    var userId = getUserid();
+
+    if (userId !== null) {
+        // Assuming placeId is the restaurant ID
+        // You may need to adjust this based on the structure of your 'donneecrous' table
+        var restaurantId = placeId;
+
+        // Make an AJAX request to add the favorite
+        $.ajax({
+            type: 'POST',
+            url: 'ajouter_favoris.php',  // Assurez-vous d'avoir le bon chemin vers votre script PHP
+            data: {
+                restaurantId: restaurantId,
+                userId: userId
+            },
+            dataType: 'json',
+            success: function (response) {
+                if (response.success) {
+                    console.log('Restaurant ajouté aux favoris');
+                    // Vous pouvez ajouter des actions supplémentaires ici si nécessaire
+                } else {
+                    console.error('Erreur lors de l\'ajout aux favoris:', response.error);
+                    // Gérer l'erreur ici si nécessaire
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Erreur AJAX:', status, error);
+                console.error('Réponse serveur:', xhr.responseText);
+            }
+        });
+    } else {
+        window.location.href = 'login.html';
+    }
 }
