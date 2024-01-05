@@ -64,7 +64,7 @@ input {
     margin: auto;
     max-height: 650px;
     max-width: 36%;
-    overflow: auto; /* Ajout du défilement vertical si le contenu dépasse la hauteur de la div */
+    overflow: auto;
     line-height: 1.45;
     text-align: center;
 

@@ -91,7 +91,7 @@ input {
     border: none;
     max-height: 180px;
     overflow-y: auto;
-    width: 19.3%; /* Ajustez la largeur selon vos besoins */
+    width: 19.3%;
     transform: translateX(54%);
     margin-top: -10px;
     font-size: small;
@@ -115,6 +115,7 @@ input {
 
 
 #proximiter {
+    text-decoration: none;
     position: absolute;
     top: 20px;
     left: 61.5%;
@@ -138,7 +139,7 @@ input {
     margin: auto;
     max-height: 590px;
     max-width: 95%;
-    overflow: auto; /* Ajout du défilement vertical si le contenu dépasse la hauteur de la div */
+    overflow: auto;
     line-height: 1.45;
     text-align: center;
 
