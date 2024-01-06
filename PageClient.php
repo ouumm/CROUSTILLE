@@ -17,29 +17,24 @@ if(!$_SESSION['mdp']){
     <link href='https://fonts.googleapis.com/css?family=Rethink Sans' rel='stylesheet'>
 
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 </head>
 <body>
 
 <div class="banniere">
-    <?php
-
-    if (isset($_SESSION['nom'])) {
-        $nomEnMajuscule = ucfirst(htmlspecialchars($_SESSION['nom']));
-        echo '<h1>Ça Crous\'tille</h1>';
-        echo '<h2>Bienvenue dans votre Espace client ' . $nomEnMajuscule  . ' ! </h2>' ;
-    } else {
-        echo '<h1>Ça Crous\'tille</h1>';
-    }
-    ?>
-
-    <div class="lien-deco">
-        <a href="deconnexion.php?deco">Se déconnecter</a>
+    <div class="lien-deco d-flex justify-content-between align-items-center">
+        <div class="float-left">
+            <h1>Ça Crous'tille</h1>
+        </div>
+        <div class="text-center">
+            <h2>Bienvenue <?php echo htmlspecialchars($_SESSION['nom']) ?></h2>
+        </div>
+        <div class="float-right" >
+            <a id="btndeco" href="deconnexion.php?deco">Se déconnecter</a>
+            <a id="btnEspaceC" href="accueil.html"> Accueil</a>
+        </div>
     </div>
-    <div class="lien-deco">
-        <a href="accueil.html">Accueil</a>
-    </div>
-
 </div>
 
 
@@ -55,17 +50,26 @@ if(!$_SESSION['mdp']){
             <a href="itineraire.html" class="ctn"  >
                 <h1> Itinéraire </h1>
                 <img src="images/logo/itinerary.png" class="img">
-            </a></div>
+            </a>
+        </div>
         <div class="forme" id="card-3">
             <a href="proximiter.html" class="ctn">
                 <h1> A proximité </h1>
                 <img src="images/logo/location.png" class="img">
-            </a></div>
+            </a>
+        </div>
         <div class="forme" id="card-3">
             <a href="forum.php" class="ctn">
                 <h1> Forum </h1>
                 <img src="images/logo/parler.png" class="img">
-            </a></div>
+            </a>
+        </div>
+        <div class="forme" id="card-3">
+            <a href="favoris.php" class="ctn">
+                <h1> Favoris </h1>
+                <img src="images/logo/favorite.png" class="img">
+            </a>
+        </div>
     </div>
 </div>
 

@@ -238,6 +238,7 @@ body, html {
     font-size: 2rem;
     font-weight: bold;
     text-align: center;
+    color: black;
 }
 
 .cover-1 p {
@@ -454,13 +455,15 @@ a:hover {
 .static-card .carte,
 .static-card .card-front,
 .static-card .Carteverso {
-    width: 255px;
-    height: 450px;
+    width: 355px;
+
+
 }
 
 .static-card .card-image img {
     max-width: 150px;
     width: 100%;
+
 }
 
 .static-card .carte:nth-child(1) .card-front,

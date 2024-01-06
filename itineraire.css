@@ -114,13 +114,40 @@ input {
 }
 
 
-#proximiter {
-    text-decoration: none;
+#proximiter{
+
     position: absolute;
     top: 20px;
     left: 61.5%;
 }
 
+#proximiter a{
+    text-decoration: none;
+    color: black;
+
+}
+#proximiter:hover{
+    background-color:  rgb(218, 65, 65);
+
+}
+#proximiter a:hover{
+    color: white;
+}
+.popup-container {
+    text-align: center;
+}
+
+.popup-container button {
+    margin-top: 10px; /* Adjust this value as needed */
+}
+
+#btnpop{
+    background-color: #ffe8d6;
+    border: none;
+    border-radius: 30px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
 
 #itineraire select, #proximiter, #retour{
     text-decoration: none;

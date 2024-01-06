@@ -75,10 +75,12 @@ function addMarker(place, i) {
     markers.push(marker);
 
     let truncatedContact = TextTraiter(place.fields.contact);
-    let popupContent = `<div><h4>${place.fields.title}</h4><p> Adresse : ${truncatedContact}`;
 
-    // Ajouter le bouton avec l'événement onclick directement dans la chaîne HTML
-    popupContent += `<button onclick="addToFavorites(${i})">Ajouter en favoris</button></div>`; // Pass the index to addToFavorites
+    // Create a container for the popup content
+    let popupContent = `<div class="popup-container"><h4>${place.fields.title}</h4><p> Adresse : ${truncatedContact}</p>`;
+
+    // Add the button with the onclick event directly into the HTML string
+    popupContent += `<button id="btnpop" onclick="addToFavorites(${i})">Ajouter en favoris</button></div>`; // Pass the index to addToFavorites
 
     let infowindow = new google.maps.InfoWindow({
         content: popupContent,
@@ -95,6 +97,8 @@ function addMarker(place, i) {
         calculerItineraire(userLatLng, { lat: place.fields.geolocalisation[0], lng: place.fields.geolocalisation[1] });
     });
 }
+
+
 
 
 

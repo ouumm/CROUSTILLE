@@ -74,10 +74,11 @@ function addMarker(place, i) {
     markers.push(marker);
 
     let truncatedContact = TextTraiter(place.fields.contact);
-    let popupContent = `<div><h4>${place.fields.title}</h4><p> Adresse : ${truncatedContact}`;
+    // Create a container for the popup content
+    let popupContent = `<div class="popup-container"><h4>${place.fields.title}</h4><p> Adresse : ${truncatedContact}</p>`;
 
-    // Ajouter le bouton avec l'événement onclick directement dans la chaîne HTML
-    popupContent += `<button onclick="addToFavorites(${i})">Ajouter en favoris</button></div>`; // Pass the index to addToFavorites
+    // Add the button with the onclick event directly into the HTML string
+    popupContent += `<button id="btnpop" onclick="addToFavorites(${i})">Ajouter en favoris</button></div>`; // Pass the index to addToFavorites
 
     let infowindow = new google.maps.InfoWindow({
         content: popupContent,
