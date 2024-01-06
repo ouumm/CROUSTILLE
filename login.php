@@ -1,6 +1,9 @@
 <?php
 session_start();
 $insertUser = null;
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 
 $bdd = new PDO('mysql:host=localhost;dbname=espace_membre;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 

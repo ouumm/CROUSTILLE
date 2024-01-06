@@ -12,23 +12,6 @@ if (!isset($_SESSION['ID'])) {
     exit();
 }
 
-/*if (isset($_POST['valider'])) {
-    // Traitement de l'ajout de message ici
-    if (!empty($_POST['message'])) {
-        // Récupérez l'ID de l'utilisateur connecté
-        $utilisateur_id = $_SESSION['ID'];
-        $message = htmlspecialchars($_POST['message']);
-
-        // Ajoutez le message à la base de données
-        $ajoutMessage = $bdd->prepare('INSERT INTO message (utilisateur_id, messageEnv) VALUES (?, ?)');
-        $ajoutMessage->execute(array($utilisateur_id, $message));
-
-        header("Location: forum.php");
-        exit();
-    } else {
-        echo "Veuillez compléter tous les champs...";
-    }
-}*/
 
 // Récupérez les messages avec le nom de l'utilisateur depuis la base de données
 $recupMessages = $bdd->query('SELECT donneecrous.Adresse, donneecrous.NumeroTelephone,donneecrous.AdresseEmail FROM favoris INNER JOIN donneecrous ON favoris.restaurant_id = donneecrous.ID ORDER BY donneecrous.ID DESC');
