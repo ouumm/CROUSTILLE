@@ -1,0 +1,29 @@
+
+
+#box {
+    border-radius: 30px;
+    max-width: 60%;
+    margin: auto;
+    align-items: center;
+}
+
+#btn{
+   background-color: rgb(218, 65, 65);
+    border-radius: 30px;
+    border: none;
+    padding-left:10px ;
+    padding-right:10px ;
+
+}
+
+#btn a {
+    color: white;
+}
+
+#titre{
+    margin-top: 60px;
+    padding: 0;
+    text-align: center;
+   color: black;
+}
+
