@@ -234,7 +234,7 @@ body, html {
 .cover-1 h2 {
     margin-top: 20px;
     font-family: 'Varela Round';
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     text-align: center;
 }
@@ -533,6 +533,7 @@ a:hover {
         margin-top: 10px;
         font-size: 1.2rem;
     }
+
 
 
 
