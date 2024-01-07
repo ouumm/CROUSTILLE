@@ -233,10 +233,11 @@ body, html {
 }
 
 .cover-1 h2 {
+    margin-top: 20px;
+    font-family: 'Varela Round';
     font-size: 2rem;
     font-weight: bold;
     text-align: center;
-    color: black;
 }
 
 .cover-1 p {
@@ -268,7 +269,6 @@ body, html {
 
 .cover-2 {
     background-color: #ffe8d6;
-
 }
 
 .containerImage {
@@ -292,8 +292,9 @@ body, html {
 
 h2 {
     color: #333;
-    margin-bottom: 40px;
-    /*border-bottom: 1px dashed gray;*/
+    margin: 20px 0;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed gray;
 }
 
 h2 span {
@@ -306,11 +307,10 @@ h2 span:nth-child(1) {
 }
 
 .conteneurCarte {
-    display: flex;
-    justify-content: center; /* Centrer horizontalement */
-    flex-wrap: wrap;
-    margin: auto; /* Ajouter une marge automatique pour centrer horizontalement */
-    padding-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-gap: 30px;
+    margin: 80px 0;
 }
 
 .CarteRetournement {
@@ -329,7 +329,7 @@ h2 span:nth-child(1) {
     height: 100%;
     transform-style: preserve-3d;
     transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
-
+    color: white;
     font-weight: bold;
 }
 
@@ -344,17 +344,18 @@ h2 span:nth-child(1) {
     -webkit-backface-visibility: hidden;
 }
 
-
-
 .card-front {
     background: rgb(218, 65, 65);
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 
 
 .card-front p {
-    font-size: 1.5em;
+    font-size: 25px;
+    line-height: 35px;
     font-weight: bold;
     color : black;
 }
@@ -378,21 +379,27 @@ h2 span:nth-child(1) {
 
 
 
-.Carteverso .TexteVerso a h3 {
+.Carteverso .TexteVerso h3 {
     text-align: center;
     font-size: 1.5rem;
     margin-bottom: 5%;
     color: #231f1f;
     font-weight: bold;
-    padding-bottom: 10px;
 }
 
-.Carteverso .TexteVerso a h3 p {
-    color: black;
-    margin: auto;
-
+.Carteverso a {
+    display: inline-block;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: normal;
+    font-size: 14px;
+    color: #dfe2e9;
+    transition: background-color 0.3s ease-out, color 0.3s ease-out;
 }
-
 
 
 .CarteRetournement:nth-child(odd) .Carteverso a:hover {
@@ -440,25 +447,20 @@ a:hover {
 
 .cover-2 .conteneurCarte {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around; /* Center horizontally */
-    gap: 15px;
+    justify-content: space-around;
 }
 
 .static-card .CarteRetournement,
 .static-card .carte,
 .static-card .card-front,
 .static-card .Carteverso {
-    width: 355px;
-    height: 45vh;
-
-
+    width: 255px;
+    height: 450px;
 }
 
 .static-card .card-image img {
     max-width: 150px;
     width: 100%;
-
 }
 
 .static-card .carte:nth-child(1) .card-front,
@@ -480,106 +482,93 @@ a:hover {
 
 
 
-        @media (max-width: 920px) {
-        body {
-            margin: 0;
-            padding: 0;
-        }
+@media (max-width: 920px) {
+    body {
+        margin: 0;
+        padding: 0;
+    }
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            height: auto;
-        }
+    .container {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
 
-        .c1,
-        .c2 {
-            flex: 1;
-        }
+    .c1,
+    .c2 {
+        flex: 1;
+    }
 
-        .half {
-            width: 100%;
-        }
+    .half {
+        width: 100%;
+    }
 
-        .btnentree {
-            width: 95%;
-        }
+    .btnentree {
+        width: 95%;
+    }
 
-        #imglogo {
-            position: absolute;
-            bottom: 90%;
-            right: 85%;
-            border-radius: 3%;
-            width: 80px;
-        }
+    #imglogo {
+        position: absolute;
+        bottom: 90%;
+        right: 85%;
+        border-radius: 3%;
+        width: 80px;
+    }
 
-        .btn-7:hover {
-            color: #716c6c;
-        }
-
-
-
-        .cover-1 h1 {
-            font-size: 1.8rem;
-        }
-
-        .cover-1 p,
-        .cover-1 h2 {
-            margin-top: 10px;
-            font-size: 1.2rem;
-        }
-
-        .cover-2 {
-            height: auto;
-        }
-
-        .cover-2 .conteneurCarte {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            gap: 15px;
-        }
-
-        .static-card .CarteRetournement,
-        .static-card .carte,
-        .static-card .card-front,
-        .static-card .Carteverso {
-            width: 100%;
-            height: auto;
-        }
-
-        .static-card .card-image img {
-            max-width: 150px;
-            width: 100%;
-        }
-
-        .cover-1 .cover-2 p,
-        .cover-1 .cover-2 h2 {
-            margin-bottom: 10px;
-            font-size: 1em;
-        }
-
-
-
-
-
-        #imglogo {
-       left: 0%;
-        }
+    .btn-7:hover {
+        color: #716c6c;
     }
 
 
 
-.conteneurCarte {
-    display: flex;
-    justify-content: center; /* Centrer horizontalement */
-    flex-wrap: wrap;
-    /*margin: auto;
-    padding-top: 60px;*/
+
+
+    .cover-1 h1 {
+        font-size: 1.8rem;
+    }
+
+    .cover-1 p,
+    .cover-1 h2 {
+        margin-top: 10px;
+        font-size: 1.2rem;
+    }
+
+
+
+
+    .cover-2 .conteneurCarte {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 15px;
+    }
+
+    .static-card .CarteRetournement,
+    .static-card .carte,
+    .static-card .card-front,
+    .static-card .Carteverso {
+        width: 100%;
+        height: auto;
+    }
+
+    .static-card .card-image img {
+        max-width: 150px;
+        width: 100%;
+    }
+
+    .cover-1 .cover-2 p,
+    .cover-1 .cover-2 h2 {
+        margin-bottom: 10px;
+        font-size: 1em;
+    }
+
+
+
+
+
+    #imglogo {
+        left: 0%;
+    }
 }
 
-.CarteRetournement {
-    flex: 1;
-    margin: 10px;
-}
 
