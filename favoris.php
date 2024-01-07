@@ -1,4 +1,3 @@
-
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -12,11 +11,10 @@ if (!isset($_SESSION['ID'])) {
     exit();
 }
 
-
 // Récupérez les messages avec le nom de l'utilisateur depuis la base de données
-$recupMessages = $bdd->query('SELECT donneecrous.Adresse, donneecrous.NumeroTelephone,donneecrous.AdresseEmail FROM favoris INNER JOIN donneecrous ON favoris.restaurant_id = donneecrous.ID ORDER BY donneecrous.ID DESC');
-
-
+$userId = $_SESSION['ID'];
+$recupMessages = $bdd->prepare('SELECT donneecrous.Adresse, donneecrous.NumeroTelephone, donneecrous.AdresseEmail FROM favoris INNER JOIN donneecrous ON favoris.restaurant_id = donneecrous.ID WHERE favoris.user_id = ? ORDER BY donneecrous.ID DESC');
+$recupMessages->execute([$userId]);
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +65,7 @@ $recupMessages = $bdd->query('SELECT donneecrous.Adresse, donneecrous.NumeroTele
             ?>
             <div class="col-md-12">
                 <div id="box" class="card mb-4">
-                        <div  class="media flex-wrap w-100 align-items-center"> </div>
+                    <div class="media flex-wrap w-100 align-items-center"></div>
                     <div class="card-body text-center">
                         <p><strong>Adresse:</strong>
                             <?php
