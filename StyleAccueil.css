@@ -248,21 +248,24 @@ body, html {
 }
 
 @media (max-width: 1200px) {
-    .cover-1 {
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-    }
+
 
     .cover-1 h1 {
-        font-size: 1.8rem;
+        font-size: 1rem;
     }
 
-    .cover-1 p {
+    .cover-1 .TexteVerso p {
+        padding-top: 20px;
+        font-size: 1rem;
+    }
+
+    .cover-1 .card-front p {
+
         font-size: 1.2rem;
+    }
+
+    h2 {
+        padding-bottom: 20px !important;
     }
 }
 
@@ -522,27 +525,20 @@ a:hover {
 
 
 
-
-
-    .cover-1 h1 {
-        font-size: 1.8rem;
-    }
-
-    .cover-1 p,
-    .cover-1 h2 {
-        margin-top: 10px;
-        font-size: 1.2rem;
-    }
-
-
-
-
-
     .cover-2 .conteneurCarte {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-        gap: 15px;
+
+    }
+
+    .CarteRetournement{
+        margin-bottom: 0 !important;
+
+    }
+    .cover-2{
+        max-height: 100%;
+
     }
 
     .static-card .CarteRetournement,
