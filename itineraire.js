@@ -146,7 +146,7 @@ function itineraire() {
             routeDetails.innerHTML = '';
 
             var detailchemin = document.getElementById('typetrajet');
-            detailchemin.innerHTML = '<p> Voici votre itinéraire : ' + '</p>';
+            detailchemin.innerHTML = '<p> La durée du trajet est de' + route.legs[0].duration.text + '</p>'; // Ajout de la durée du trajet
 
             for (var i = 0; i < route.legs.length; i++) {
                 var leg = route.legs[i];
@@ -158,6 +158,7 @@ function itineraire() {
         }
     });
 }
+
 
 function calculateRoute() {
     var start = document.getElementById('start').value;

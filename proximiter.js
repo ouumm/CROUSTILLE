@@ -231,7 +231,7 @@ function calculerItineraire(userLatLng, crousLatLng) {
 
             let routeDetails = document.getElementById("fin");
 
-            routeDetails.innerHTML = '<div id="tout" >' + '<h2>' + "Voici l'itinéraire : " + '</h2>';
+            routeDetails.innerHTML = '<div id="tout" >' + '<h2>' + "la durée du trajet est de" + route.legs[0].duration.text + '</h2>';
 
             for (let i = 0; i < route.legs.length; i++) {
                 let leg = route.legs[i];
@@ -240,6 +240,7 @@ function calculerItineraire(userLatLng, crousLatLng) {
                     routeDetails.innerHTML += '<p>' + step.instructions + '</p>';
                 }
             }
+
             routeDetails.innerHTML += '<button id="retour" onclick="retourAdresses()"> Retour</button>';
             routeDetails.innerHTML += '<button id="accueil" onclick="reloadPage()"> Nouvelle recherche </button>';
 
@@ -250,6 +251,8 @@ function calculerItineraire(userLatLng, crousLatLng) {
         }
     });
 }
+
+
 
 function reloadPage() {
     location.reload();
