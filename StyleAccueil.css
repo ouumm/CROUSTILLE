@@ -254,7 +254,7 @@ body, html {
         font-size: 1rem;
     }
 
-    .cover-1 .TexteVerso p {
+    .cover-1 .TexteVerso a p {
         padding-top: 20px;
         font-size: 1rem;
     }
@@ -383,7 +383,7 @@ h2 span:nth-child(1) {
 
 
 
-.Carteverso .TexteVerso h3 {
+.Carteverso .TexteVerso a h3 {
     text-align: center;
     font-size: 1.5rem;
     margin-bottom: 5%;
@@ -391,19 +391,9 @@ h2 span:nth-child(1) {
     font-weight: bold;
 }
 
-.Carteverso a {
-    display: inline-block;
-    border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 20px;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-weight: normal;
-    font-size: 14px;
-    color: #dfe2e9;
-    transition: background-color 0.3s ease-out, color 0.3s ease-out;
-}
+
+
+
 
 
 .CarteRetournement:nth-child(odd) .Carteverso a:hover {
