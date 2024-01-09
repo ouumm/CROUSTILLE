@@ -56,7 +56,7 @@ function initMap() {
         geolocalisation();
     });
 
-    let btnRecherche = document.getElementById("recherche")
+    let btnRecherche = document.getElementById("recherche");
     btnRecherche.addEventListener("click", function () {
         clearMarkers();
         GeocodeAdresseSaisie();
@@ -78,7 +78,7 @@ function addMarker(place, i) {
 
     let popupContent = `<div class="popup-container"><h4>${place.fields.title}</h4><p> Adresse : ${truncatedContact}</p>`;
 
-    popupContent += `<button id="btnpop" onclick="addToFavorites(${i})">Ajouter en favoris</button></div>`; // Pass the index to addToFavorites
+    popupContent += `<button id="btnpop" onclick="addToFavorites(${i})">Ajouter en favoris</button></div>`;
 
     let infowindow = new google.maps.InfoWindow({
         content: popupContent,
@@ -163,13 +163,13 @@ function CalculerDistance(userLatLng) {
             new google.maps.LatLng(userLatLng),
             new google.maps.LatLng(crousLatLng)
         );
-        return distance <= radiusInKm * 1000; // Convert radius to meters
+        return distance <= radiusInKm * 1000;
+
     });
 
-    // Masquer la div itinéraire
+
     document.getElementById("itineraire").style.display = "none";
 
-    // Afficher la nouvelle div avec les adresses des CROUS
     let adressesCrousDiv = document.getElementById("adressesCrous");
     adressesCrousDiv.style.display = "block";
 
@@ -181,7 +181,6 @@ function CalculerDistance(userLatLng) {
             lng: nearbyCrous[i].fields.geolocalisation[1]
         };
 
-        // Ajoutez un événement de clic à chaque adresse affichée
         adressesCrousDiv.innerHTML += "<p class='adresse-crous' data-lat='" + crousLatLng.lat + "' data-lng='" + crousLatLng.lng + "'>" + nearbyCrous[i].fields.title + " - " + AdressCrousTraiter + "</p>";
 
         addMarker(nearbyCrous[i]);
@@ -231,7 +230,7 @@ function calculerItineraire(userLatLng, crousLatLng) {
 
             let routeDetails = document.getElementById("fin");
 
-            routeDetails.innerHTML = '<div id="tout" >' + '<h2>' + "la durée du trajet est de" + route.legs[0].duration.text + '</h2>';
+            routeDetails.innerHTML = '<div id="tout" >' + '<h2>' + "la durée du trajet est de " + route.legs[0].duration.text + '</h2>';
 
             for (let i = 0; i < route.legs.length; i++) {
                 let leg = route.legs[i];
@@ -296,7 +295,7 @@ function getUserid() {
 
     $.ajax({
         type: 'GET',
-        url: 'get_user_id.php',
+        url: '../favoris/get_user_id.php',
         dataType: 'json',
         async: false,
         success: function (response) {
@@ -320,7 +319,7 @@ function addToFavorites(placeId) {
 
         $.ajax({
             type: 'POST',
-            url: 'ajouter_favoris.php',
+            url: '../favoris/ajouter_favoris.php',
             data: {
                 restaurantId: restaurantId,
                 userId: userId

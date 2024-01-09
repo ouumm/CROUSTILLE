@@ -5,6 +5,8 @@ var currentInfowindow = null;
 var jsonData;
 var userLatLng;
 var markers = [];
+var addressInputFromMarkerClick = false;
+
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -78,7 +80,7 @@ function addMarker(place, i) {
     let popupContent = `<div class="popup-container"><h4>${place.fields.title}</h4><p> Adresse : ${truncatedContact}</p>`;
 
 
-    popupContent += `<button id="btnpop" onclick="addToFavorites(${i})">Ajouter en favoris</button></div>`; // Pass the index to addToFavorites
+    popupContent += `<button id="btnpop" onclick="addToFavorites(${i})">Ajouter en favoris</button></div>`;
 
     let infowindow = new google.maps.InfoWindow({
         content: popupContent,
@@ -95,6 +97,7 @@ function addMarker(place, i) {
         let adressechamp = document.getElementById("end");
         adressechamp.value = truncatedContact;
 
+        addressInputFromMarkerClick = true;
     });
 }
 function autocompletionCrous(id) {
@@ -149,7 +152,7 @@ function itineraire() {
             routeDetails.innerHTML = '';
 
             var detailchemin = document.getElementById('typetrajet');
-            detailchemin.innerHTML = '<p> La durée du trajet est de' + route.legs[0].duration.text + '</p>'; // Ajout de la durée du trajet
+            detailchemin.innerHTML = '<p> La durée du trajet est de ' + route.legs[0].duration.text + '</p>'; // Ajout de la durée du trajet
 
             for (var i = 0; i < route.legs.length; i++) {
                 var leg = route.legs[i];
@@ -167,17 +170,15 @@ function calculateRoute() {
     var start = document.getElementById('start').value;
     var end = document.getElementById('end').value;
 
-    // Use Geocoding to check if the start address is valid
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({ 'address': start }, function (results, status) {
         if (status !== 'OK' || !results[0].geometry) {
-            alert('Veuillez saisir une adresse de départ valide.');
+            alert('Veuillez saisir une adresse valide.');
             return;
         }
 
-        if (window.location.href.includes('itineraire.html')) {
+        if (!addressInputFromMarkerClick && window.location.href.includes('itineraire.html')) {
             var endAddressFound = checkAddressInJSON(end);
-
             if (!endAddressFound) {
                 alert('Veuillez saisir une adresse de Crous valide.');
                 return;
@@ -213,8 +214,8 @@ function getUserid() {
 
     $.ajax({
         type: 'GET',
-        url: 'get_user_id.php',
-        dataType: 'json', // Specify that the response should be treated as JSON
+        url: '../favoris/get_user_id.php',
+        dataType: 'json',
         async: false,
         success: function (response) {
             userInfo = response;
@@ -230,18 +231,15 @@ function getUserid() {
 function addToFavorites(placeId) {
     console.log('Adding to favorites - Place ID:', placeId);
 
-    // Get the user ID
+
     var userId = getUserid();
 
     if (userId !== null) {
-        // Assuming placeId is the restaurant ID
-        // You may need to adjust this based on the structure of your 'donneecrous' table
         var restaurantId = placeId;
 
-        // Make an AJAX request to add the favorite
         $.ajax({
             type: 'POST',
-            url: 'ajouter_favoris.php',  // Assurez-vous d'avoir le bon chemin vers votre script PHP
+            url: '../favoris/ajouter_favoris.php',
             data: {
                 restaurantId: restaurantId,
                 userId: userId
@@ -250,10 +248,8 @@ function addToFavorites(placeId) {
             success: function (response) {
                 if (response.success) {
                     console.log('Restaurant ajouté aux favoris');
-                    // Vous pouvez ajouter des actions supplémentaires ici si nécessaire
                 } else {
                     console.error('Erreur lors de l\'ajout aux favoris:', response.error);
-                    // Gérer l'erreur ici si nécessaire
                 }
             },
             error: function (xhr, status, error) {
@@ -262,6 +258,6 @@ function addToFavorites(placeId) {
             }
         });
     } else {
-        window.location.href = 'login.html';
+        window.location.href = '../login/login.html';
     }
 }

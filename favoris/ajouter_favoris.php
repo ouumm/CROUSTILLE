@@ -3,13 +3,11 @@ error_log('Début du fichier ajouter_favoris.php');
 
 session_start();
 
-// Vérification si l'utilisateur est connecté
 if (!isset($_SESSION['ID'])) {
     echo json_encode(['success' => false, 'error' => 'Utilisateur non connecté']);
     exit();
 }
 
-// Connexion à la base de données
 try {
     $bdd = new PDO('mysql:host=localhost;dbname=espace_membre;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 } catch (PDOException $e) {
@@ -17,17 +15,14 @@ try {
     exit();
 }
 
-// Vérification si les données nécessaires sont présentes
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['restaurantId'], $_POST['userId'])) {
     $userID = $_POST['userId'];
     $restaurantID = $_POST['restaurantId'];
 
-    // Vérification si le restaurant n'est pas déjà dans les favoris de l'utilisateur
     $checkQuery = $bdd->prepare('SELECT * FROM favoris WHERE user_id = :userID AND restaurant_id = :restaurantID');
     $checkQuery->execute(['userID' => $userID, 'restaurantID' => $restaurantID]);
 
     if ($checkQuery->rowCount() == 0) {
-        // Utilisation de paramètres dans la requête préparée pour éviter les injections SQL
         $insertQuery = $bdd->prepare('INSERT INTO favoris (user_id, restaurant_id) VALUES (?, ?)');
         $insertQuery->execute([$userID, $restaurantID]);
 

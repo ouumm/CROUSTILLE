@@ -12,7 +12,7 @@
     <div id="map"></div>
     <img id="imglogo" src="../images/logo-cacroustille.png" alt="Logo">
     <div id="itineraire">
-        <button id="proximiter"><a href="../pageClient/PageClient.php" > Accueil </a></button>
+        <button id="proximiter"><a href="../pageClient/PageClient.php" > Espace Client </a></button>
         <h1>C'est part'ille !</h1>
         <select id="modeTransport">
             <option value="DRIVING">En voiture</option>

@@ -11,7 +11,6 @@ $bdd = new PDO('mysql:host=localhost;dbname=espace_membre;charset=utf8', 'root',
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['inscription'])) {
-// Traitement du formulaire d'inscription ici
         if (!empty($_POST['nom']) && !empty($_POST['email']) && !empty($_POST['mdp'])) {
             $nom = htmlspecialchars($_POST['nom']);
             $email = htmlspecialchars($_POST['email']);

@@ -6,20 +6,16 @@ session_start();
 
 $bdd = new PDO('mysql:host=localhost;dbname=espace_membre;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
-// Vérification de la session
 if (!isset($_SESSION['ID'])) {
     header("Location: login.html");
     exit();
 }
 
 if (isset($_POST['valider'])) {
-    // Traitement de l'ajout de message ici
     if (!empty($_POST['message'])) {
-        // Récupérez l'ID de l'utilisateur connecté
         $utilisateur_id = $_SESSION['ID'];
         $message = htmlspecialchars($_POST['message']);
 
-        // Ajoutez le message à la base de données
         $ajoutMessage = $bdd->prepare('INSERT INTO message (utilisateur_id, messageEnv) VALUES (?, ?)');
         $ajoutMessage->execute(array($utilisateur_id, $message));
 
@@ -30,7 +26,6 @@ if (isset($_POST['valider'])) {
     }
 }
 
-// Récupérez les messages avec le nom de l'utilisateur depuis la base de données
 $recupMessages = $bdd->query('SELECT utilisateur.nom, message.messageEnv FROM message INNER JOIN utilisateur ON message.utilisateur_id = utilisateur.ID ORDER BY message.ID DESC');
 
 ?>
@@ -109,18 +104,7 @@ $recupMessages = $bdd->query('SELECT utilisateur.nom, message.messageEnv FROM me
 
 </div>
 <script>
-    function ajusterHauteurPage() {
-        var nombreMessages = <?php echo $recupMessages->rowCount(); ?>;
-        //var hauteurMinimale = 0; // Hauteur minimale de la page
-        var hauteurCarte = 23; // Hauteur de chaque carte
 
-        var hauteurNouvelle = nombreMessages * hauteurCarte;
-
-        document.getElementsByClassName('cover-1')[0].style.height = hauteurNouvelle + 'vh';
-    }
-
-    // Appeler la fonction au chargement de la page
-    window.onload = ajusterHauteurPage;
 </script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>

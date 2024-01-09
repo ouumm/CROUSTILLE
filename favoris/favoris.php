@@ -7,7 +7,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=espace_membre;charset=utf8', 'root',
 
 // Vérification de la session
 if (!isset($_SESSION['ID'])) {
-    header("Location: login.html");
+    header("Location: ../login/login.html");
     exit();
 }
 
@@ -60,7 +60,6 @@ $recupMessages->execute([$userId]);
 <div class="container-fluid mt-100">
     <div class="row">
         <?php
-        // Affichez chaque message en tant que carte
         while ($favori = $recupMessages->fetch()) {
             ?>
             <div class="col-md-12">
@@ -85,7 +84,6 @@ $recupMessages->execute([$userId]);
                             <p><strong>Adresse Email:</strong> <?php echo htmlspecialchars($favori['AdresseEmail']); ?></p>
                         <?php endif; ?>
 
-                        <!-- Ajoutez le lien d'itinéraire avec l'adresse correspondante -->
                         <button id ="btn"><a href="favoris_itineraire.php?adresse=<?php echo urlencode($favori['Adresse']); ?>" >Itinéraire</a> </button>
                     </div>
 

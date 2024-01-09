@@ -11,6 +11,7 @@ body {
     text-align: left;
     background-color: #ffe8d6;
 
+
 }
 
 html, body {
@@ -19,7 +20,7 @@ html, body {
 }
 .cover-1 {
     background-color: #ffe8d6;
-
+    height: 100%;
     top: 0;
     left: 0;
 
