@@ -2,7 +2,7 @@
 <?php
 session_start();
 if(!$_SESSION['mdp']){
-    header('location: login.html');
+    header('location: ../login/login.html');
 }
 
 ?>
@@ -31,8 +31,8 @@ if(!$_SESSION['mdp']){
             <h2>Bienvenue <?php echo htmlspecialchars($_SESSION['nom']) ?></h2>
         </div>
         <div class="float-right" >
-            <a id="btndeco" href="deconnexion.php?deco">Se déconnecter</a>
-            <a id="btnEspaceC" href="accueil.html"> Accueil</a>
+            <a id="btndeco" href="../login/deconnexion.php?deco">Se déconnecter</a>
+            <a id="btnEspaceC" href="../accueil/accueil.html"> Accueil</a>
         </div>
     </div>
 </div>
@@ -47,27 +47,27 @@ if(!$_SESSION['mdp']){
 
     <div id="card-1" class="conteneur">
         <div class="forme">
-            <a href="itineraire.html" class="ctn"  >
+            <a href="../itineraire/itineraire.html" class="ctn"  >
                 <h1> Itinéraire </h1>
-                <img src="images/logo/itinerary.png" class="img">
+                <img src="../images/logo/itinerary.png" class="img">
             </a>
         </div>
         <div class="forme" id="card-3">
-            <a href="proximiter.html" class="ctn">
+            <a href="../proximiter/proximiter.html" class="ctn">
                 <h1> A proximité </h1>
-                <img src="images/logo/location.png" class="img">
+                <img src="../images/logo/location.png" class="img">
             </a>
         </div>
         <div class="forme" id="card-3">
-            <a href="forum.php" class="ctn">
+            <a href="../forum/forum.php" class="ctn">
                 <h1> Forum </h1>
                 <img src="images/logo/forum.png" class="img">
             </a>
         </div>
         <div class="forme" id="card-3">
-            <a href="favoris.php" class="ctn">
+            <a href="../favoris/favoris.php" class="ctn">
                 <h1> Favoris </h1>
-                <img src="images/logo/favorite.png" class="img">
+                <img src="../images/logo/favorite.png" class="img">
             </a>
         </div>
     </div>

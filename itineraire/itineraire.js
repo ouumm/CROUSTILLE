@@ -34,7 +34,7 @@ function initMap() {
 
     let indice = 0;
     $.ajax({
-        url: 'resto_crous.json',
+        url: '../json/resto_crous.json',
         dataType: 'json',
         success: function (json) {
             jsonData = json;

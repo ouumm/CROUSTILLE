@@ -29,7 +29,7 @@ $recupMessages->execute([$userId]);
 
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="STYLEforum.css">
+    <link rel="stylesheet" href="../forum/STYLEforum.css">
     <link rel="stylesheet" href="favoris.css">
 
     <title>Favoris</title>
@@ -48,8 +48,8 @@ $recupMessages->execute([$userId]);
             <h2>Bienvenue <?php echo htmlspecialchars($_SESSION['nom']) ?></h2>
         </div>
         <div class="float-right" >
-            <a id="btndeco" href="deconnexion.php?deco">Se déconnecter</a>
-            <a id="btnEspaceC" href="PageClient.php">Espace Client</a>
+            <a id="btndeco" href="../login/deconnexion.php?deco">Se déconnecter</a>
+            <a id="btnEspaceC" href="../pageClient/PageClient.php">Espace Client</a>
         </div>
     </div>
 </div>

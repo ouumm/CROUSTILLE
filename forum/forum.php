@@ -63,8 +63,8 @@ $recupMessages = $bdd->query('SELECT utilisateur.nom, message.messageEnv FROM me
             <h2>Bienvenue <?php echo htmlspecialchars($_SESSION['nom']) ?></h2>
         </div>
         <div class="float-right" >
-            <a id="btndeco" href="deconnexion.php?deco">Se déconnecter</a>
-            <a id="btnEspaceC" href="PageClient.php">Espace Client</a>
+            <a id="btndeco" href="../login/deconnexion.php?deco">Se déconnecter</a>
+            <a id="btnEspaceC" href="../pageClient/PageClient.php">Espace Client</a>
         </div>
     </div>
 </div>
@@ -90,7 +90,7 @@ $recupMessages = $bdd->query('SELECT utilisateur.nom, message.messageEnv FROM me
                 <div class="col-md-12">
                     <div id= "box" class="card mb-4 ">
                         <div class="card-header">
-                            <div class="media flex-wrap w-100 align-items-center"> <img src="images/logo/utilisateur.png" class="d-block ui-w-40 rounded-circle" alt="">
+                            <div class="media flex-wrap w-100 align-items-center"> <img src="../images/logo/utilisateur.png" class="d-block ui-w-40 rounded-circle" alt="">
                                 <div class="media-body ml-3"> <a href="javascript:void(0)" data-abc="true"><?php echo htmlspecialchars($message['nom']); ?></a>
                                     <div class="text-muted small">Posté le  <?php echo date("F j, Y", strtotime('now')); ?></div>
                                 </div>
@@ -112,7 +112,7 @@ $recupMessages = $bdd->query('SELECT utilisateur.nom, message.messageEnv FROM me
     function ajusterHauteurPage() {
         var nombreMessages = <?php echo $recupMessages->rowCount(); ?>;
         //var hauteurMinimale = 0; // Hauteur minimale de la page
-        var hauteurCarte = 22.5; // Hauteur de chaque carte
+        var hauteurCarte = 23; // Hauteur de chaque carte
 
         var hauteurNouvelle = nombreMessages * hauteurCarte;
 
