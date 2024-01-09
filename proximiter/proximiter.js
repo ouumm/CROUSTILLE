@@ -94,6 +94,8 @@ function addMarker(place, i) {
         infowindow.open(map, marker);
         currentInfowindow = infowindow;
 
+
+
         calculerItineraire(userLatLng, { lat: place.fields.geolocalisation[0], lng: place.fields.geolocalisation[1] });
     });
 }

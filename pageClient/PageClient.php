@@ -61,7 +61,7 @@ if(!$_SESSION['mdp']){
         <div class="forme" id="card-3">
             <a href="../forum/forum.php" class="ctn">
                 <h1> Forum </h1>
-                <img src="images/logo/forum.png" class="img">
+                <img src="../images/logo/parler.png" class="img">
             </a>
         </div>
         <div class="forme" id="card-3">

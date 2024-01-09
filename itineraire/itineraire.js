@@ -92,6 +92,9 @@ function addMarker(place, i) {
         infowindow.open(map, marker);
         currentInfowindow = infowindow;
 
+        let adressechamp = document.getElementById("end");
+        adressechamp.value = truncatedContact;
+
     });
 }
 function autocompletionCrous(id) {
@@ -172,12 +175,15 @@ function calculateRoute() {
             return;
         }
 
-        var endAddressFound = checkAddressInJSON(end);
+        if (window.location.href.includes('itineraire.html')) {
+            var endAddressFound = checkAddressInJSON(end);
 
-        if (!endAddressFound) {
-            alert('Veuillez saisir une adresse de Crous valide.');
-            return;
+            if (!endAddressFound) {
+                alert('Veuillez saisir une adresse de Crous valide.');
+                return;
+            }
         }
+
 
         itineraire();
         document.getElementById("itineraire").style.display = 'none';
