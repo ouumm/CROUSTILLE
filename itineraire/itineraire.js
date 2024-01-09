@@ -74,15 +74,15 @@ function addMarker(place, i) {
     markers.push(marker);
 
     let truncatedContact = TextTraiter(place.fields.contact);
-    // Create a container for the popup content
+
     let popupContent = `<div class="popup-container"><h4>${place.fields.title}</h4><p> Adresse : ${truncatedContact}</p>`;
 
-    // Add the button with the onclick event directly into the HTML string
+
     popupContent += `<button id="btnpop" onclick="addToFavorites(${i})">Ajouter en favoris</button></div>`; // Pass the index to addToFavorites
 
     let infowindow = new google.maps.InfoWindow({
         content: popupContent,
-        id: i // Assign the index to the id property of the InfoWindow
+        id: i
     });
 
     marker.addListener('click', function () {
@@ -125,7 +125,7 @@ function updateAutocomplete(inputId, inputValue) {
         listItem.textContent = TextTraiter(place.fields.contact);
         listItem.onclick = function () {
             document.getElementById(inputId).value = place.fields.contact;
-            autocompleteUl.innerHTML = ''; // Clear the list after selecting
+            autocompleteUl.innerHTML = '';
         };
         autocompleteUl.appendChild(listItem);
     });

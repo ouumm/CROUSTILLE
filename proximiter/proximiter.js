@@ -76,15 +76,13 @@ function addMarker(place, i) {
 
     let truncatedContact = TextTraiter(place.fields.contact);
 
-    // Create a container for the popup content
     let popupContent = `<div class="popup-container"><h4>${place.fields.title}</h4><p> Adresse : ${truncatedContact}</p>`;
 
-    // Add the button with the onclick event directly into the HTML string
     popupContent += `<button id="btnpop" onclick="addToFavorites(${i})">Ajouter en favoris</button></div>`; // Pass the index to addToFavorites
 
     let infowindow = new google.maps.InfoWindow({
         content: popupContent,
-        id: i // Assign the index to the id property of the InfoWindow
+        id: i
     });
 
     marker.addListener('click', function () {
@@ -299,7 +297,7 @@ function getUserid() {
     $.ajax({
         type: 'GET',
         url: 'get_user_id.php',
-        dataType: 'json', // Specify that the response should be treated as JSON
+        dataType: 'json',
         async: false,
         success: function (response) {
             userInfo = response;
@@ -315,18 +313,14 @@ function getUserid() {
 function addToFavorites(placeId) {
     console.log('Adding to favorites - Place ID:', placeId);
 
-    // Get the user ID
     var userId = getUserid();
 
     if (userId !== null) {
-        // Assuming placeId is the restaurant ID
-        // You may need to adjust this based on the structure of your 'donneecrous' table
         var restaurantId = placeId;
 
-        // Make an AJAX request to add the favorite
         $.ajax({
             type: 'POST',
-            url: 'ajouter_favoris.php',  // Assurez-vous d'avoir le bon chemin vers votre script PHP
+            url: 'ajouter_favoris.php',
             data: {
                 restaurantId: restaurantId,
                 userId: userId
@@ -335,10 +329,8 @@ function addToFavorites(placeId) {
             success: function (response) {
                 if (response.success) {
                     console.log('Restaurant ajouté aux favoris');
-                    // Vous pouvez ajouter des actions supplémentaires ici si nécessaire
                 } else {
                     console.error('Erreur lors de l\'ajout aux favoris:', response.error);
-                    // Gérer l'erreur ici si nécessaire
                 }
             },
             error: function (xhr, status, error) {
